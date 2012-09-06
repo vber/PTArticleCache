@@ -34,9 +34,6 @@ static NSSet *extensions;
     else if ([fileExtension isEqualToString:@"jpg"]) {
         return @"image/jpg";
     }
-    else if ([fileExtension isEqualToString:@"png"]) {
-        return @"image/png";
-    }
     else if ([fileExtension isEqualToString:@"gif"]) {
         return @"image/gif";
     }
