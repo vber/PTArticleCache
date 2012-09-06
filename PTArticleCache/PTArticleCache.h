@@ -11,7 +11,7 @@
 /**
  * 正文缓存类
  * @note 用于缓存正文。目前只支持文章正文、js、css、,jpg、jpeg、gif、png文件的缓存。
- * @author:杜伟
+ * @author 杜伟
  * @date:2012-9-5
  */
 
