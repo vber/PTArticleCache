@@ -21,7 +21,7 @@
 }
 
 /**
- * 保存WebView的网页页面。由于网页URLCache不会写入缓存，改由在网页载入完成后手动调用此方法写入缓存。
+ * @brief 保存WebView的网页页面。由于网页URLCache不会写入缓存，改由在网页载入完成后手动调用此方法写入缓存。
  * @param webview UIWebView 进行缓存的UIWebView对象。
  * @par 示例
  * @code
@@ -35,7 +35,7 @@
 + (void)saveHTMLPageToCache:(UIWebView *)webview;
 
 /**
- * 获取缓存数据。
+ * @brief 获取缓存数据。
  * @param url NSURL 传入URL地址，以获取此URL地址的缓存数据。
  * @return NSData。返回缓存数据。当为NULL时表示没有缓存数据。
  * @note 可以通过判断返回值是否为NULL来判断是否已缓存。
