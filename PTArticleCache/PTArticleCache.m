@@ -18,10 +18,10 @@ static NSSet *extensions;
 
 /**
  * 根据扩展名获取MimeType
- * @param:fileExtension NSString 文件扩展名
- * @return:返回扩展名对应的MimeType
- * @author:杜伟
- * @date:2012-9-5
+ * @param fileExtension NSString 文件扩展名
+ * @return 返回扩展名对应的MimeType
+ * @author 杜伟
+ * @date 2012-9-5
  */
 - (NSString *)fetchMimeTypeForPath:(NSString *)fileExtension
 {
@@ -49,10 +49,10 @@ static NSSet *extensions;
 
 /**
  * 获取字符串的MD5值
- * @param:str NSString 要进行计算MD5值的字符串
- * @return:返回字符串的MD5值
- * @author:杜伟
- * @date:2012-9-5
+ * @param str NSString 要进行计算MD5值的字符串
+ * @return 返回字符串的MD5值
+ * @author 杜伟
+ * @date 2012-9-5
  */
 + (NSString *)fetchMD5:(NSString *)str {
     const char *cStr = [str UTF8String];
@@ -73,9 +73,9 @@ static NSSet *extensions;
 
 /**
  * 获取缓存目录
- * @return:返回缓存目录路径
- * @author:杜伟
- * @date:2012-9-5
+ * @return 返回缓存目录路径
+ * @author 杜伟
+ * @date 2012-9-5
  */
 + (NSString *)fetchCachePath {
     NSString *cachePath = NSHomeDirectory();
@@ -88,11 +88,11 @@ static NSSet *extensions;
 
 /**
  * 获取缓存数据。
- * @param:url NSURL 传入URL地址，以获取此URL地址的缓存数据。
- * @return:NSData。返回缓存数据。当为NULL时表示没有缓存数据。
- * @note:可以通过判断返回值是否为NULL来判断是否已缓存。
- * @author:杜伟
- * @date:2012-9-5
+ * @param url NSURL 传入URL地址，以获取此URL地址的缓存数据。
+ * @return NSData。返回缓存数据。当为NULL时表示没有缓存数据。
+ * @note 可以通过判断返回值是否为NULL来判断是否已缓存。
+ * @author 杜伟
+ * @date 2012-9-5
  */
 + (NSData *)fetchCachedData:(NSURL *)url {
     // 将整个URL地址转换为MD5值，存储时或则查询缓存文件时均使用此MD5值来判断
@@ -111,9 +111,9 @@ static NSSet *extensions;
 
 /**
  * 保存WebView的网页页面。由于网页URLCache不会写入缓存，改由在网页载入完成后手动调用此方法写入缓存。
- * @param:webview UIWebView 进行缓存的UIWebView对象
- * @author:杜伟
- * @date:2012-9-5
+ * @param webview UIWebView 进行缓存的UIWebView对象
+ * @author 杜伟
+ * @date 2012-9-5
  */
 + (void)saveHTMLPageToCache:(UIWebView *)webview {    
     NSString *url_md5 = [self fetchMD5:webview.request.URL.absoluteString];
