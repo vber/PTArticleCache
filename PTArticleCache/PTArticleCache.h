@@ -4,7 +4,7 @@
 //  缓存掌脉iPhone阅读APP的正文文章
 //  Author:杜伟
 //  Date:2012-9-5
-//  ver:2.1
+//  ver:2.2
 
 #import <Foundation/Foundation.h>
 
@@ -59,6 +59,6 @@
 /**
  * 正文内容是否来自缓存
  */
-@property (nonatomic, readonly) BOOL readCahce;
+@property (nonatomic, readonly, getter = valueForReadCache) BOOL readCahce;
 
 @end

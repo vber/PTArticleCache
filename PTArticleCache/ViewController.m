@@ -38,6 +38,12 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     NSLog(@"web:%@",webView.request.URL);
     
+    PTArticleCache *ac = (PTArticleCache *)[NSURLCache sharedURLCache];
+    if (ac.readCahce) {
+        NSLog(@"从缓存读取。");
+    }
+        
+    
     [PTArticleCache saveHTMLPageToCache:webView];
 }
 

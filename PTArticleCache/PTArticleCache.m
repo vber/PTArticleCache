@@ -10,10 +10,23 @@
 @synthesize readCahce;
 
 static NSSet *extensions;
+static BOOL gReadFromCache; // 是否是从缓存中读取
 
 + (void)initialize {
     // 可以进入缓存的文件类型
     extensions = [[NSSet setWithObjects:@"js", @"css",@"jpg",@"jpeg",@"gif",@"png",nil] retain];
+}
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        gReadFromCache = NO;
+    }
+    return self;
+}
+
+- (BOOL)valueForReadCache {
+    return gReadFromCache;
 }
 
 /**
@@ -104,6 +117,7 @@ static NSSet *extensions;
                            url_md5];
     // 存在缓存文件则读取缓存文件并返回相关数据
     if ([[NSFileManager defaultManager] fileExistsAtPath:cacheFile]) {
+        gReadFromCache = YES;
         return [NSData dataWithContentsOfFile:cacheFile];
     }
     return nil;
@@ -127,7 +141,6 @@ static NSSet *extensions;
 
 - (NSCachedURLResponse *)cachedResponseForRequest:(NSURLRequest *)request
 {
-    readCahce = NO;
     // 获取URL地址中的扩展名
     NSString *file_extension = request.URL.pathExtension;
     // 如果不在可以缓存的文件类型列表中，则使用默认处理方式
@@ -137,7 +150,7 @@ static NSSet *extensions;
     
     NSData *cacheData = [PTArticleCache fetchCachedData:request.URL];
     if (cacheData) {
-        readCahce = YES;
+        gReadFromCache = YES;
         NSURLResponse *response =
         		[[[NSURLResponse alloc]
         			initWithURL:[request URL]
